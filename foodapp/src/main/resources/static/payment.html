@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickBite - Payment</title>
+  <link rel="stylesheet" href="payment.css" />
+</head>
+<body>
+
+  <!-- PAYMENT PAGE -->
+  <div class="pay-wrap" id="pay-wrap">
+
+    <!-- LEFT SIDE - Order Summary -->
+    <div class="pay-left">
+      <div class="logo">🍔 QuickBite</div>
+
+      <div class="order-sum-title">Order Summary</div>
+      <div id="order-items"></div>
+
+      <hr class="divider"/>
+      <div class="order-item">
+        <span>Delivery charge</span><span>₹30</span>
+      </div>
+      <hr class="divider"/>
+      <div class="total-row">
+        <span>Total</span>
+        <span id="total-amount">₹0</span>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Payment Methods -->
+      <div class="method-list">
+        <button class="method-btn active" onclick="showMethod('upi', this)">
+          📱 UPI
+        </button>
+        <button class="method-btn" onclick="showMethod('card', this)">
+          💳 Card
+        </button>
+        <button class="method-btn" onclick="showMethod('netbank', this)">
+          🏦 Net Banking
+        </button>
+        <button class="method-btn" onclick="showMethod('cod', this)">
+          💵 Cash on Delivery
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE - Payment Form -->
+    <div class="pay-right">
+
+      <!-- UPI Section -->
+      <div id="upi-section">
+        <div class="section-title">Pay using UPI</div>
+        <div class="upi-input-wrap">
+          <input type="text" id="upi-id" placeholder="Enter UPI ID (eg: name@upi)"/>
+          <button class="verify-btn" onclick="verifyUPI()">Verify</button>
+        </div>
+        <div class="or-text">or pay using</div>
+        <div class="upi-apps">
+          <div class="upi-app" onclick="payNow('UPI')">
+            <div class="upi-icon">G</div>GPay
+          </div>
+          <div class="upi-app" onclick="payNow('UPI')">
+            <div class="upi-icon">P</div>PhonePe
+          </div>
+          <div class="upi-app" onclick="payNow('UPI')">
+            <div class="upi-icon">P</div>Paytm
+          </div>
+          <div class="upi-app" onclick="payNow('UPI')">
+            <div class="upi-icon">B</div>BHIM
+          </div>
+        </div>
+        <button class="pay-btn" onclick="payNow('UPI')">Pay <span class="pay-amount"></span></button>
+      </div>
+
+      <!-- Card Section -->
+      <div id="card-section" style="display:none">
+        <div class="section-title">Pay using Card</div>
+        <div class="form-group">
+          <label>Card Number</label>
+          <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)"/>
+        </div>
+        <div class="form-group">
+          <label>Cardholder Name</label>
+          <input type="text" placeholder="Name on card"/>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Expiry Date</label>
+            <input type="text" placeholder="MM/YY" maxlength="5"/>
+          </div>
+          <div class="form-group">
+            <label>CVV</label>
+            <input type="password" placeholder="***" maxlength="3"/>
+          </div>
+        </div>
+        <button class="pay-btn" onclick="payNow('Card')">Pay <span class="pay-amount"></span></button>
+      </div>
+
+      <!-- Net Banking Section -->
+      <div id="netbank-section" style="display:none">
+        <div class="section-title">Select your bank</div>
+        <div class="netbank-list">
+          <div class="bank-item" onclick="payNow('Net Banking')">🏦 SBI</div>
+          <div class="bank-item" onclick="payNow('Net Banking')">🏦 HDFC Bank</div>
+          <div class="bank-item" onclick="payNow('Net Banking')">🏦 ICICI Bank</div>
+          <div class="bank-item" onclick="payNow('Net Banking')">🏦 Axis Bank</div>
+          <div class="bank-item" onclick="payNow('Net Banking')">🏦 Kotak Bank</div>
+          <div class="bank-item" onclick="payNow('Net Banking')">🏦 Punjab National</div>
+        </div>
+        <button class="pay-btn" onclick="payNow('Net Banking')">Pay <span class="pay-amount"></span></button>
+      </div>
+
+      <!-- Cash on Delivery Section -->
+      <div id="cod-section" style="display:none">
+        <div class="section-title">Cash on Delivery</div>
+        <div class="cod-wrap">
+          <div class="cod-icon">💵</div>
+          <div class="cod-title">Pay when your order arrives!</div>
+          <div class="cod-desc">Keep <span class="pay-amount"></span> ready in cash when the delivery partner arrives at your doorstep. No advance payment needed.</div>
+          <button class="pay-btn cod-btn" onclick="payNow('Cash on Delivery')">Confirm Order</button>
+        </div>
+      </div>
+
+      <div class="secure">🔒 100% secure payment powered by QuickBite Pay</div>
+    </div>
+  </div>
+
+  <!-- SUCCESS PAGE -->
+  <div class="success-wrap" id="success-wrap">
+    <div class="success-icon">✅</div>
+    <div class="success-title">Order Confirmed!</div>
+    <div class="success-msg" id="success-msg">Your order has been placed successfully</div>
+    <div class="order-id">Order ID: #QB<span id="oid"></span></div>
+    <button class="track-btn" onclick="window.location.href='tracking.html'">Track Order</button>
+    <button class="home-btn" onclick="window.location.href='index.html'">Back to Menu</button>
+  </div>
+
+  <script src="payment.js"></script>
+</body>
+</html>

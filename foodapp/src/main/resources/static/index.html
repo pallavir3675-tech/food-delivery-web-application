@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickBite - Food Delivery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🍔 QuickBite</div>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Cart <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Hungry? We got you!</h1>
+      <p>Fresh food delivered to your door</p>
+      <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+        Order Now
+      </button>
+    </div>
+    <div class="hero-emoji">🍕</div>
+  </div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <h2>Our Menu</h2>
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="🔍 Search for food..." oninput="searchFood(this.value)" />
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="categories">
+      <button class="cat-btn active" onclick="filterMenu('all', this)">All</button>
+      <button class="cat-btn" onclick="filterMenu('Burger', this)">🍔 Burgers</button>
+      <button class="cat-btn" onclick="filterMenu('Pizza', this)">🍕 Pizza</button>
+      <button class="cat-btn" onclick="filterMenu('Indian', this)">🍛 Indian</button>
+      <button class="cat-btn" onclick="filterMenu('Drinks', this)">🧃 Drinks</button>
+    </div>
+
+    <!-- FOOD CARDS -->
+    <div class="food-grid" id="food-grid">
+      <p class="loading">Loading menu...</p>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="empty-msg">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cart-total">₹0</strong></div>
+      <button class="checkout-btn" onclick="goToPayment()">Checkout</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h2>Place Your Order</h2>
+      <input type="text" id="customer-name" placeholder="Your name" />
+      <input type="text" id="customer-address" placeholder="Delivery address" />
+      <p>Items: <span id="modal-items"></span></p>
+      <p>Total: <strong id="modal-total"></strong></p>
+      <div class="modal-btns">
+        <button onclick="closeModal()">Cancel</button>
+        <button class="confirm-btn" onclick="placeOrder()">Confirm Order</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

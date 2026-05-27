@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickBite - Login</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="logo">🍔 QuickBite</div>
+      <p class="tagline">Login to order delicious food!</p>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('login')">Login</button>
+        <button class="tab" onclick="showTab('register')">Register</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="form" id="login-form">
+        <input type="email" id="login-email" placeholder="Email" />
+        <input type="password" id="login-password" placeholder="Password" />
+        <button class="submit-btn" onclick="login()">Login</button>
+        <p class="msg" id="login-msg"></p>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="form" id="register-form" style="display:none">
+        <input type="text" id="reg-name" placeholder="Full Name" />
+        <input type="email" id="reg-email" placeholder="Email" />
+        <input type="password" id="reg-password" placeholder="Password" />
+        <button class="submit-btn" onclick="register()">Register</button>
+        <p class="msg" id="register-msg"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

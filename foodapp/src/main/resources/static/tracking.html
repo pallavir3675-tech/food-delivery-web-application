@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickBite - Track Order</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="tracking.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🍔 QuickBite</div>
+    <button class="back-btn" onclick="window.location.href='index.html'">← Back to Menu</button>
+  </nav>
+
+  <!-- TRACKING PAGE -->
+  <div class="track-wrap">
+
+    <!-- LEFT SIDE - Order Status -->
+    <div class="track-left">
+
+      <div class="order-info">
+        <div class="order-info-title">Order ID</div>
+        <div class="order-info-value">#QB<span id="order-id">000001</span></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Status Steps -->
+      <div class="status-title">Order Status</div>
+
+      <div class="status-steps">
+        <div class="step active" id="step-placed">
+          <div class="step-icon">✅</div>
+          <div class="step-info">
+            <div class="step-name">Order Placed</div>
+            <div class="step-desc">Your order has been received</div>
+          </div>
+        </div>
+
+        <div class="step-line" id="line-1"></div>
+
+        <div class="step" id="step-preparing">
+          <div class="step-icon">👨‍🍳</div>
+          <div class="step-info">
+            <div class="step-name">Preparing</div>
+            <div class="step-desc">Restaurant is preparing your food</div>
+          </div>
+        </div>
+
+        <div class="step-line" id="line-2"></div>
+
+        <div class="step" id="step-onway">
+          <div class="step-icon">🛵</div>
+          <div class="step-info">
+            <div class="step-name">On the Way</div>
+            <div class="step-desc">Delivery partner is on the way</div>
+          </div>
+        </div>
+
+        <div class="step-line" id="line-3"></div>
+
+        <div class="step" id="step-delivered">
+          <div class="step-icon">🎉</div>
+          <div class="step-info">
+            <div class="step-name">Delivered</div>
+            <div class="step-desc">Order delivered successfully!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Delivery Info -->
+      <div class="delivery-info">
+        <div class="delivery-title">Delivery Partner</div>
+        <div class="delivery-person">
+          <div class="person-avatar">R</div>
+          <div class="person-details">
+            <div class="person-name">Ravi Kumar</div>
+            <div class="person-phone">📞 +91 98765 43210</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Estimated Time -->
+      <div class="eta-box">
+        <div class="eta-label">Estimated Delivery Time</div>
+        <div class="eta-time" id="eta-time">30 minutes</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE - Map -->
+    <div class="track-right">
+      <div id="map"></div>
+      <div class="map-status" id="map-status">
+        🛵 Delivery partner is on the way...
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="tracking.js"></script>
+</body>
+</html>
